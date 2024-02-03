@@ -1,22 +1,26 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage";
-import AboutPage from "./AboutPage";
-import NotFoundPage from "./NotFoundPage";
+// import React from "react";
+import "./index.css";
+
+import { Outlet, useNavigate } from "react-router-dom";
+
+import Layout from "@components/Layout";
+import StarsCanvas from "@components/StarBackground";
+import Nav from "@components/NavBar";
+import Hero from "@components/HeroSection";
+import Footer from "@components/Footer";
 
 function App() {
 	return (
-		<Router>
-			<div>
-				{/* Navigation and other global components can go here */}
-				<Switch>
-					<Route exact path="/" component={HomePage} />
-					<Route path="/about" component={AboutPage} />
-					{/* Fallback route for unmatched paths */}
-					<Route component={NotFoundPage} />
-				</Switch>
-			</div>
-		</Router>
+		<div>
+			<StarsCanvas />
+			<Nav />
+			<Hero />
+			<Layout>
+				<Outlet />
+			</Layout>
+
+			<Footer />
+		</div>
 	);
 }
 
